@@ -16,10 +16,9 @@ import { core, emeriti } from './_data/team'
 
 <VPTeamPage>
   <VPTeamPageTitle>
-    <template #title>Meet the Team</template>
+    <template #title>ພົບກັບທີມງານ</template>
     <template #lead>
-      The development of Vite is guided by an international team, some of whom
-      have chosen to be featured below.
+      ການພັດທະນາ Vite ແມ່ນໄດ້ຮັບຄຳແນະນຳຈາກທີມງານລະດັບນານາຊາດ, ຊື່ງບາງຄົນໄດ້ຖືກເລືອກໃຫ້ມີຄວາມໂດດເດັ່ນດັ່ງຕໍ່ໄປນີ້
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers :members="core" />

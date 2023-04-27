@@ -2,43 +2,43 @@
 layout: home
 
 title: Vite
-titleTemplate: Next Generation Frontend Tooling
+titleTemplate: ເຄື່ອງມື Frontend ລຸ້ນຕໍ່ໄປ
 
 hero:
   name: Vite
-  text: Next Generation Frontend Tooling
-  tagline: Get ready for a development environment that can finally catch up with you.
+  text: ເຄື່ອງມື Frontend ລຸ້ນຕໍ່ໄປ
+  tagline: ກຽມຕົວໃຫ້ພ້ອມສຳລັບສະພາບແວດລ້ອມການພັດທະນາທີ່ຕາມທັນທ່ານ
   image:
     src: /logo-with-shadow.png
     alt: Vite
   actions:
     - theme: brand
-      text: Get Started
+      text: ເລີ່ມຕົ້ນ
       link: /guide/
     - theme: alt
-      text: Why Vite?
+      text: ເປັນຫຍັງຕ້ອງ Vite?
       link: /guide/why
     - theme: alt
-      text: View on GitHub
+      text: ເບິ່ງຢູ່ GitHub
       link: https://github.com/vitejs/vite
 
 features:
   - icon: 💡
-    title: Instant Server Start
-    details: On demand file serving over native ESM, no bundling required!
+    title: ເລີ່ມເຊີເວີທັນທີ
+    details: ຟາຍຕາມຕ້ອງການທີແລ່ນເທິ່ງ native ESM, ບໍ່ຈຳເປັນຕ້ອງລວມຟາຍ!
   - icon: ⚡️
-    title: Lightning Fast HMR
-    details: Hot Module Replacement (HMR) that stays fast regardless of app size.
+    title: HMR ໄວຟ້າຜ່າ
+    details: Hot Module Replacement (HMR) ທີໄວໂດຍບໍ່ຄິດເຖິງຂະໜາດຂອງແອັບ.
   - icon: 🛠️
-    title: Rich Features
-    details: Out-of-the-box support for TypeScript, JSX, CSS and more.
+    title: ຄຸນສົມບັດຄົບຄັນ
+    details: ຄັບກ່ອງ, ສະໜັບສະໜູນ TypeScript, JSX, CSS ແລະ ອີກຫຼາຍ.
   - icon: 📦
     title: Optimized Build
     details: Pre-configured Rollup build with multi-page and library mode support.
   - icon: 🔩
     title: Universal Plugins
-    details: Rollup-superset plugin interface shared between dev and build.
+    details: Rollup-superset plugin interface ແບ່ງປັນລະຫວ່າງ dev ແລະ build.
   - icon: 🔑
-    title: Fully Typed APIs
-    details: Flexible programmatic APIs with full TypeScript typing.
+    title: Typed APIs ທີ່ຄົບຖ້ວນ
+    details: Flexible programmatic APIs ພ້ອມກັບ full TypeScript typing.
 ---
