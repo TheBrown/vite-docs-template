@@ -1,6 +1,6 @@
 import { defineConfig, DefaultTheme } from 'vitepress'
 
-const ogDescription = 'Next Generation Frontend Tooling'
+const ogDescription = 'ເຄື່ອງມື Frontend ລຸ້ນຕໍ່ໄປ'
 const ogImage = 'https://vitejs.dev/og-image.png'
 const ogTitle = 'Vite'
 const ogUrl = 'https://vitejs.dev'
@@ -35,26 +35,26 @@ const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
     case 'local':
       return [
         {
-          text: 'Vite 4 Docs (release)',
+          text: 'ເອກະສານ Vite 4 (ປ່ອຍ)',
           link: 'https://vitejs.dev',
         },
         {
-          text: 'Vite 3 Docs',
+          text: 'ເອກະສານ Vite 3',
           link: 'https://v3.vitejs.dev',
         },
         {
-          text: 'Vite 2 Docs',
+          text: 'ເອກະສານ Vite 2',
           link: 'https://v2.vitejs.dev',
         },
       ]
     case 'release':
       return [
         {
-          text: 'Vite 3 Docs',
+          text: 'ເອກະສານ Vite 3',
           link: 'https://v3.vitejs.dev',
         },
         {
-          text: 'Vite 2 Docs',
+          text: 'ເອກະສານ Vite 2',
           link: 'https://v2.vitejs.dev',
         },
       ]
@@ -103,7 +103,7 @@ export default defineConfig({
 
     editLink: {
       pattern: 'https://github.com/vitejs/vite/edit/main/docs/:path',
-      text: 'Suggest changes to this page',
+      text: 'ແນະນຳການປ່ຽນແປງສຳລັບໜ້ານີ້',
     },
 
     socialLinks: [
@@ -128,18 +128,18 @@ export default defineConfig({
     },
 
     footer: {
-      message: `Released under the MIT License. (${commitRef})`,
-      copyright: 'Copyright © 2019-present Evan You & Vite Contributors',
+      message: `ເຜີຍແຜ່ພາຍໃຕ້ໃບອະນຸຍາດ MIT. (${commitRef})`,
+      copyright: 'ສະຫງວນລິຂະສິດ © 2019-present Evan You ແລະ ຜູ້ມີສ່ວນຮ່ວມພັດທະນາ Vite',
     },
 
     nav: [
-      { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
-      { text: 'Config', link: '/config/', activeMatch: '/config/' },
+      { text: 'ຄູ່ມື', link: '/guide/', activeMatch: '/guide/' },
+      { text: 'ການຕັ້ງຄ່າ', link: '/config/', activeMatch: '/config/' },
       { text: 'Plugins', link: '/plugins/', activeMatch: '/plugins/' },
       {
-        text: 'Resources',
+        text: 'ແຫຼ່ງທີ່ມາ',
         items: [
-          { text: 'Team', link: '/team' },
+          { text: 'ທີມ', link: '/team' },
           {
             items: [
               {
@@ -155,7 +155,7 @@ export default defineConfig({
                 link: 'https://github.com/vitejs/awesome-vite',
               },
               {
-                text: 'DEV Community',
+                text: 'ຊຸມຊົນ DEV',
                 link: 'https://dev.to/t/vite',
               },
               {
@@ -163,7 +163,7 @@ export default defineConfig({
                 link: 'https://vite-rollup-plugins.patak.dev/',
               },
               {
-                text: 'Changelog',
+                text: 'ບັນທຶກການປ່ຽນແປງ',
                 link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md',
               },
             ],
@@ -171,7 +171,7 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Version',
+        text: 'ເວີຊັ່ນ',
         items: versionLinks,
       },
     ],
@@ -179,18 +179,18 @@ export default defineConfig({
     sidebar: {
       '/guide/': [
         {
-          text: 'Guide',
+          text: 'ຄູ່ມື',
           items: [
             {
-              text: 'Why Vite',
+              text: 'ເປັນຫຍັງຕ້ອງເປັນ Vite',
               link: '/guide/why',
             },
             {
-              text: 'Getting Started',
+              text: 'ເລີ່ມຕົ້ນໃຊ້ງານ',
               link: '/guide/',
             },
             {
-              text: 'Features',
+              text: 'ຄຸນສົມບັດ',
               link: '/guide/features',
             },
             {
@@ -198,7 +198,7 @@ export default defineConfig({
               link: '/guide/cli',
             },
             {
-              text: 'Using Plugins',
+              text: 'ນຳໃຊ້ Plugins',
               link: '/guide/using-plugins',
             },
             {
@@ -226,19 +226,19 @@ export default defineConfig({
               link: '/guide/ssr',
             },
             {
-              text: 'Backend Integration',
+              text: 'ການເຊື່ອມຕໍ່ Backend ',
               link: '/guide/backend-integration',
             },
             {
-              text: 'Comparisons',
+              text: 'ການປຽບທຽບ',
               link: '/guide/comparisons',
             },
             {
-              text: 'Troubleshooting',
+              text: 'ການແກ້ໄຂບັນຫາ',
               link: '/guide/troubleshooting',
             },
             {
-              text: 'Migration from v3',
+              text: 'ການຍ້າຍຈາກ v3',
               link: '/guide/migration',
             },
           ],
@@ -259,7 +259,7 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
-              text: 'Config Reference',
+              text: 'ອ້າງອີງການຕັ້ງຄ່າ',
               link: '/config/',
             },
           ],
@@ -267,38 +267,38 @@ export default defineConfig({
       ],
       '/config/': [
         {
-          text: 'Config',
+          text: 'ການຕັ້ງຄ່າ',
           items: [
             {
-              text: 'Configuring Vite',
+              text: 'ການຕັ້ງຄ່າ Vite',
               link: '/config/',
             },
             {
-              text: 'Shared Options',
+              text: 'ຕົວເລືອກ Shared',
               link: '/config/shared-options',
             },
             {
-              text: 'Server Options',
+              text: 'ຕົວເລືອກ Server',
               link: '/config/server-options',
             },
             {
-              text: 'Build Options',
+              text: 'ຕົວເລືອກ Build',
               link: '/config/build-options',
             },
             {
-              text: 'Preview Options',
+              text: 'ຕົວເລືອກ Preview',
               link: '/config/preview-options',
             },
             {
-              text: 'Dep Optimization Options',
+              text: 'ຕົວເລືອກ Dep Optimization',
               link: '/config/dep-optimization-options',
             },
             {
-              text: 'SSR Options',
+              text: 'ຕົວເລືອກ SSR',
               link: '/config/ssr-options',
             },
             {
-              text: 'Worker Options',
+              text: 'ຕົວເລືອກ Worker',
               link: '/config/worker-options',
             },
           ],
