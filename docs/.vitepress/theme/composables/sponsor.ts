@@ -41,12 +41,12 @@ export function useSponsor() {
 function mapSponsors(sponsors: Sponsors) {
   return [
     {
-      tier: 'Platinum Sponsor',
+      tier: 'ຜູ້ສະໜັບສະໜູນຊັ້ນແພັດຕິນຳ',
       size: 'big',
       items: mapImgPath(sponsors['platinum']),
     },
     {
-      tier: 'Gold Sponsors',
+      tier: 'ຜູ້ສະໜັບສະໜູນຊັ້ນຄຳ',
       size: 'medium',
       items: mapImgPath(sponsors['gold']),
     },
