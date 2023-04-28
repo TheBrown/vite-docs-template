@@ -1,28 +1,28 @@
-# Why Vite
+# ເປັນຫຍັງຕ້ອງເປັນ Vite
 
-## The Problems
+## ບັນຫາ
 
-Before ES modules were available in browsers, developers had no native mechanism for authoring JavaScript in a modularized fashion. This is why we are all familiar with the concept of "bundling": using tools that crawl, process and concatenate our source modules into files that can run in the browser.
+ກ່ອນທີ ES modules ຈະສາມາດໃຊ້ງານໄດ້ໃນບາວເຊີ, ເດີມນັກພັດທະນາບໍ່ມີກົນໄກໃນການຂຽນ JavaScript ໃນຮູບແບບ modular. ນີ້ແມ່ນເຫດຜົນທີພວກເຮົາທຸກຄົນຄຸ້ນເຄີຍກັບແນວຄິດຂອງ "bundling": ການໃຊ້ເຄື່ອງມືທີ່ຮວບຮ່ວມຂໍ້ມູນ, ປະມວນຜົນ ແລະ ເຊື່ອມ source module ຂອງເຮົາເຂົ້າກັນກັບຟາຍທີສາມາດແລ່ນໄດ້ໃນບາວເຊີ.
 
-Over time we have seen tools like [webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org) and [Parcel](https://parceljs.org/), which greatly improved the development experience for frontend developers.
+ເມື່ອເວລາຜ່ານໄປ ພວກເຮົາກໍໄດ້ເຫັນເຄື່ອງມືຢ່າງ [webpack](https://webpack.js.org/), [rollup](https://rollupjs.org) ແລະ [parcel](https://parceljs.org/), ທີປັບປຸງປະສົບການພັດທະນາສຳລັບນັກພັດທະນາ frontend ເປັນຢ່າງຫຼາຍ.
 
-However, as we build more and more ambitious applications, the amount of JavaScript we are dealing with is also increasing dramatically. It is not uncommon for large scale projects to contain thousands of modules. We are starting to hit a performance bottleneck for JavaScript based tooling: it can often take an unreasonably long wait (sometimes up to minutes!) to spin up a dev server, and even with Hot Module Replacement (HMR), file edits can take a couple of seconds to be reflected in the browser. The slow feedback loop can greatly affect developers' productivity and happiness.
+ເຖິງຢ່າງໃດກໍຕາມ, ເມື່ອພວກເຮົາສ້າງແອັບພິເຄຊັ່ນທີມີຄວາມໃຫຍ່ຂຶ້ນເລື້ອຍໆ, ປະລິມານຂອງ JavaScript ທີເຮົາກຳລັງຈັດການຢູ່ກໍເພີ່ມຂຶ້ນຢ່າງຫຼວງຫຼາຍເຊັ່ນກັນ. ມັນບໍ່ແມ່ນເລື່ອງແປກທີໂປເຈັກຂະໜາດໃຫຍ່ຈະມີຫຼາຍໂມດູ. ພວກເຮົາກຳລັງພົບບັນຫາຄໍຂວດດ້ານປະສິດທິພາບສຳລັບເຄື່ອງມືທີ່ໃຊ້ JavaScript: ມັນຈະໃຊ້ເວລາລໍຖ້າເກີນສົມຄວນ (ບາງເທື່ອກໍອາດຮອດນາທີ!) ທີ່ຈະແລ່ນ dev server ໄດ້, ແລະ ເຖິງວ່າຈະໃຊ້ Hot Module ແທນ (HMR), ການແກ້ໄຂຟາຍກໍອາດຈະໃຊ້ເວລາບໍ່ເທົ່າໃດວິນາທີຈຶ່ງຈະສະແດງເທິງບາວເຊີ. ການຕອບສະໜອງທີຊ້າອາດຈະສົ່ງຜົນກະທົບຕໍ່ປະສິດທິພາບ ແລະ ຄວາມສຸກຂອງນັກພັດທະນາເປັນຢ່າງຫຼາຍ.
 
-Vite aims to address these issues by leveraging new advancements in the ecosystem: the availability of native ES modules in the browser, and the rise of JavaScript tools written in compile-to-native languages.
+Vite ຕັ້ງເປົ້າໝາຍທີ່ຈະແກ້ໄຂບັນຫາເຫຼົ່ານີ້ ໂດຍໃຊ້ປະໂຫຍດຈາກຄວາມກ້າວໜ້າໃໝ່ໆໃນລະບົບນິເວດເຊັ່ນ: ຄວາມພ້ອມໃນການໃຊ້ງານ ES module ໃນບາວເຊີ, ແລະ ການເພີ່ມຂຶ້ນຂອງເຄື່ອງມື JavaScript ທີ່ຂຽນໃນພາສາ compile-to-native.
 
-### Slow Server Start
+### ເລີ່ມແລ່ນ Server ຊ້າ 
 
-When cold-starting the dev server, a bundler-based build setup has to eagerly crawl and build your entire application before it can be served.
+ເມືອແລ່ນ dev server ຄັ້ງທຳອິດ, ການຕັ້ງຄ່າ build ຕາມແບບ bundler-based ແມ່ນຈະຕ້ອງລວມຂໍ້ມູນຢ່າງຈິງຈັງ ແລະ ສ້າງແອັບພິເຄຊັ່ນທັງໝົດຂອງທ່ານກ່ອນທີມັນຈະສາມາດໃຫ້ບໍລິການ.
 
-Vite improves the dev server start time by first dividing the modules in an application into two categories: **dependencies** and **source code**.
+Vite ປັບປຸງເວລາການແລ່ນ dev server ຄັ້ງທຳອິດ ໂດຍການແບ່ງ module ໃນແອັບພິເຄຊັ່ນອອກເປັນ 2 ປະເພດ: **dependencies** ແລະ **source code**.
 
-- **Dependencies** are mostly plain JavaScript that do not change often during development. Some large dependencies (e.g. component libraries with hundreds of modules) are also quite expensive to process. Dependencies may also be shipped in various module formats (e.g. ESM or CommonJS).
+- **Dependencies** ສ່ວນຫຼາຍແມ່ນ JavaScript ທຳມະດາທີ່ບໍ່ມີການປ່ຽນແປງເລື້ອຍໆໃນລະຫວ່າງການພັດທະນາ. ບາງ dependency ທີໃຫຍ່ (ເຊັ່ນ: component libraries ທີ່ມາພ້ອມກັບຫຼາຍຮ້ອຍ module) ທີຄ່ອນຂ້າງໃຊ້ເວລາໃນການ process. Dependency ອາດຈະມາໃນຮູບແບບຂອງ module ຕ່າງໆ (ເຊັ່ນ: ESM ຫຼື CommonJS).
 
-  Vite [pre-bundles dependencies](./dep-pre-bundling) using [esbuild](https://esbuild.github.io/). esbuild is written in Go and pre-bundles dependencies 10-100x faster than JavaScript-based bundlers.
+  Vite [pre-bundles dependencies](./dep-pre-bundling) ໃຊ້ [esbuild](https://esbuild.github.io/). esbuild ທີ່ຂຽນໃນພາສາ Go ແລະ ເປັນ pre-bundles dependencies  ທີ່ໄວກວ່າແບບ  JavaScript-based bundlers 10-100ເທົ່າ.
 
-- **Source code** often contains non-plain JavaScript that needs transforming (e.g. JSX, CSS or Vue/Svelte components), and will be edited very often. Also, not all source code needs to be loaded at the same time (e.g. with route-based code-splitting).
+- **Source code** ມັກຈະມີ non-plain JavaScript ທີ່ຕ້ອງການການປ່ຽນແປງ (ເຊັ່ນ: JSX, CSS ຫຼື Vue/Svelte components), ແລະ ຈະຖືກແກ້ໄຂຢູ່ເລື້ອຍໆ. ນອກຈາກນີ້, ບໍ່ແມ່ນທັງໝົດຂອງ source code ທີ່ຕ້ອງຖືກໂຫຼດໃນເວລາດຽວກັນ (ເຊັ່ນ: ກັບ route-based code-splitting).
 
-  Vite serves source code over [native ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). This is essentially letting the browser take over part of the job of a bundler: Vite only needs to transform and serve source code on demand, as the browser requests it. Code behind conditional dynamic imports is only processed if actually used on the current screen.
+  Vite ແລ່ນ source code ຜ່ານ [native ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). ນີ້ແມ່ນສິ່ງຈຳເປັນທີ່ເຮັດໃຫ້ບາວເຊີເຂົ້າມາເປັນສ່ວນໜຶ່ງຂອງວຽກ ຂອງ bundler: Vite ພຽງແຕ່ຕ້ອງການປ່ຽນ ແລະ ແລ່ນ source code ຕາມຄວາມຕ້ອງການ, ຕອນທີ່ບາວເຊີຕ້ອງການມັນ. Code ທີ່ຢູ່ເບື້ອງຫຼັງຂອງເງື່ອນໄຂ import ແບບ dynamic ແມ່ນສະເພາະຕອນ process ເທົ່ານັ້ນ ຖ້າວ່າກຳລັງຖືກໃຊ້ງານໃນໜ້າຈໍປັດຈຸບັນ.
 
 <script setup>
 import bundlerSvg from '../images/bundler.svg?raw'
@@ -31,30 +31,30 @@ import esmSvg from '../images/esm.svg?raw'
 <svg-image :svg="bundlerSvg" />
 <svg-image :svg="esmSvg" />
 
-### Slow Updates
+### ອັບເດດຊ້າ
 
-When a file is edited in a bundler-based build setup, it is inefficient to rebuild the whole bundle for an obvious reason: the update speed will degrade linearly with the size of the app.
+ເມື່ອຟາຍໃດໜຶ່ງຖືກແກ້ໄຂໃນ ການຕັ້ງຄ່າ build ແບບ bundler-based, ມັນບໍ່ມີປະສິດທິພາບທີ່ຈະ rebuild bundle ທັງໝົດ ເຫດຜົນແມ່ນ: ຄວາມໄວຂອງການອັບເດດຈະຫຼຸດລົງເກືອບເທົ່າກັນກັບຂະໜາດຂອງແອັບ.
 
-In some bundlers, the dev server runs the bundling in memory so that it only needs to invalidate part of its module graph when a file changes, but it still needs to re-construct the entire bundle and reload the web page. Reconstructing the bundle can be expensive, and reloading the page blows away the current state of the application. This is why some bundlers support Hot Module Replacement (HMR): allowing a module to "hot replace" itself without affecting the rest of the page. This greatly improves DX - however, in practice we've found that even HMR update speed deteriorates significantly as the size of the application grows.
+ໃນບາງ bundlers, dev server ແລ່ນ bundling ໃນ memory ໂດຍມັນພຽງແຕ່ຕ້ອງການ invalidate module graph ບາງສ່ວນຂອງມັນ ເມືອຟາຍມີການປ່ຽນແປງ, ແຕ່ກໍຍັງຕ້ອງໄດ້ສ້າງ bundle ໃໝ່ທັງໝົດ ແລະ ໂຫຼດໜ້າເວັບຄືນໃໝ່. ການສ້າງ bundle ໃໝ່ອາດມີລາຄາແພງ ແລະ ການໂຫຼດໜ້າເວັບໃໝ່ອາດຈະເຮັດໃຫ້ສະຖານະປັດຈຸບັນຂອງແອັບພິເຄຊັ່ນເສຍໄປ. ນີ້ແມ່ນສາເຫດທີບາງ bundle ຮອງຮັບ Hot Module Replacement (HMR): ອະນຸຍາດໃຫ້ module "ແທນທີຢ່າງວ່ອງໄວ" ເອງ ໂດຍບໍ່ສົ່ງຜົນກະທົບຕໍ່ສ່ວນທີ່ເຫຼືອຂອງໜ້າເວັບ. ສິ່ງນີ້ຊ່ອຍປັບປຸງປະສົບການການພັດທະນາຂອງນັກພັດທະນາເປັນຢ່າງຫຼາຍ - ເຖິງຢ່າງໃດກໍຕາມ, ໃນທາງປະຕິບັດ ພວກເຮົາພົບວ່າຄວາມໄວໃນການອັບເດດຂອງ HMR ຈະຫຼຸດລົງຢ່າງຫຼາຍຕາມຂະໜາດຂອງແອັບພິເຄຊັ່ນທີ່ໃຫຍ່ຂຶ້ນ.
 
-In Vite, HMR is performed over native ESM. When a file is edited, Vite only needs to precisely invalidate the chain between the edited module and its closest HMR boundary (most of the time only the module itself), making HMR updates consistently fast regardless of the size of your application.
+ໃນ Vite, HMR ເຮັດວຽກຜ່ານ native ESM. ເມືອຟາຍມີການແກ້ໄຂ, Vite ຈຳເປັນຕ້ອງເຮັດໃຫ້ຫ່ວງໂຊ່ລະຫວ່າງໂມດູທີ່ແກ້ໄຂ ແລະ ຂອບເຂດຂອງ HMR ເອງ ທີ່ໃກ້ທີ່ສຸດ invalidate ແລະ ຖືກຕ້ອງທີ່ສຸດ (ໂດຍສ່ວນໃຫຍ່ແລ້ວແມ່ນສະເພາະ module ເທົ່ານັ້ນ), ເຮັດໃຫ້ການອັບເດດ HMR ວ່ອງໄວຢ່າງສະໝໍ່າສະເໝີໂດຍບໍ່ສົນຂະໜາດຂອງແອັບພິເຄຊັ່ນຂອງທ່ານ.
 
-Vite also leverages HTTP headers to speed up full page reloads (again, let the browser do more work for us): source code module requests are made conditional via `304 Not Modified`, and dependency module requests are strongly cached via `Cache-Control: max-age=31536000,immutable` so they don't hit the server again once cached.
+Vite ຍັງໃຊ້ HTTP headers ເພື່ອເລັ່ງຄວາມໄວຂອງການໂຫຼດໜ້າເວັບທັງໝົດຄືນໃໝ່ (ອີກເທື່ອໜຶ່ງ, ໃຫ້ບາວເຊີເຮັດວຽກໃຫ້ເຮົາຫຼາຍຂຶ້ນ): source code module ຕ້ອງການປ່ຽນແປງເງື່ອນໄຂຜ່ານ `304 Not Modified`, ແລະ dependency module ຕ້ອງການ cache ຢ່າງຫຼາຍຜ່ານ `Cache-Control: max-age=31536000,immutable` ດັ່ງນັ້ນພວກເຂົາຈິງບໍ່ຕ້ອງແລ່ນ server ໃໝ່ອີກຄັ້ງຖ້າມັນຖືກ cache ແລ້ວ.
 
-Once you experience how fast Vite is, we highly doubt you'd be willing to put up with bundled development again.
+ເມື່ອທ່ານໄດ້ສຳພັດກັບຄວາມໄວຂອງ Vite ແລ້ວ, ພວກເຮົາມິຄວາມສົງໄສເປັນຢ່າງສູງວ່າ ທ່ານຈະເຕັມໃຈທີ່ຈະເຮັດໃຫ້ມີການພັດທະນາ bundle ອີກຄັ້ງ.
 
-## Why Bundle for Production
+## ເປັນຫຍັງຕ້ອງ Bundle ສຳລັບ Production
 
-Even though native ESM is now widely supported, shipping unbundled ESM in production is still inefficient (even with HTTP/2) due to the additional network round trips caused by nested imports. To get the optimal loading performance in production, it is still better to bundle your code with tree-shaking, lazy-loading and common chunk splitting (for better caching).
+ເຖິງແມ່ນວ່າ native ESM ໄດ້ຮັບການສະໜັບສະໜູນຢ່າງກວ້າງຂວາງໃນປັດຈຸບັນ, shipping unbundled ESM ໃນ production ແມ່ນຍັງບໍ່ມີປະສິດທິພາບ (ເຖິງແມ່ນວ່າມີ HTTP/2) ເນື່ອງຈາກການເດີນທາງຮອບເຄືອຂ່າຍເພີ່ມເຕີມທີເກີດຈາກ nested import. ເພື່ອໃຫ້ໄດ້ປະສິດທິພາບການໂຫຼດທີ່ດີທີ່ສຸດໃນ production, ມັນດີກວ່າທີ່ຈະ bundle code ຂອງທ່ານກັບ tree-shaking, lazy-loading ແລະ common chunk splitting (ສຳລັບການ cache ທີ່ດີກວ່າ).
 
-Ensuring optimal output and behavioral consistency between the dev server and the production build isn't easy. This is why Vite ships with a pre-configured [build command](./build) that bakes in many [performance optimizations](./features#build-optimizations) out of the box.
+ການຮັບປະກັນຜົນລັບທີ່ດີທີ່ສຸດ ແລະ ຄວາມສອດຄ່ອງທາງດ້ານພຶດຕິກຳລະຫວ່າງ dev server ແລະ production build ບໍ່ແມ່ນເລື່ອງງ່າຍ. ນີ້ແມ່ນເຫດຜົນເປັນຫຍັງ Vite ຈິງ ship ກັບ pre-configured [build command](./build) ທີ່ນຳ [ການເພີ່ມປະສິດທິພາບ](./features#build-optimizations) ມາໃຊ້ຢ່າງຫຼວງຫຼາຍຕັ້ງແຕ່ເລີ່ມຕົ້ນ.
 
-## Why Not Bundle with esbuild?
+## ເປັນຫຍັງບໍ່ Bundle ກັບ esbuild?
 
-Vite's current plugin API isn't compatible with using `esbuild` as a bundler. In spite of `esbuild` being faster, Vite's adoption of Rollup's flexible plugin API and infrastructure heavily contributed to its success in the ecosystem. For the time being, we believe that Rollup offers a better performance-vs-flexibility tradeoff.
+API plugin ປັດຈຸບັນຂອງ Vite ບໍ່ຮອງຮັບການໃຊ້ `esbuild` ເປັນ bundler. ເຖິງວ່າ `esbuild` ຈະໄວກວ່າ ການຮັບຮອງເອົາ Vite ຂອງ Rollup's flexible plugin API ແລະ intrastructure ໄດ້ປະກອບສ່ວນຢ່າງໃຫຍ່ຫຼວງກັບຄວາມສຳເລັດຂອງມັນໃນລະບົບນິເວດ. ສຳລັບເວລານີ້, ພວກເຮົາເຊື່ອວ່າ Rollup ໃຫ້ການແລກປ່ຽນລະຫວ່າງປະສິດທິພາບກັບຄວາມຍືດຍຸ່ນທີ່ດີກວ່າ.
 
-That said, `esbuild` has progressed a lot in the past years, and we won't rule out the possibility of using `esbuild` for production builds in the future. We will keep taking advantage of new capabilities as they are released, as we have done with JS and CSS minification where `esbuild` allowed Vite to get a performance boost while avoiding disruption for its ecosystem.
+ທີ່ເວົ້າວ່າ, `esbuild` ມີຄວາມກ້າວໜ້າຫຼາຍໃນປີທີ່ຜ່ານມາ, ແລະ ພວກເຮົາຈະບໍ່ປະຕິເສດຄວາມເປັນໄປໄດ້ຂອງການນຳໃຊ້ `esbuild` ສຳລັບ production build ໃນອະນາຄົດ. ພວກເຮົາຈະສືບຕໍ່ໃຊ້ປະໂຫຍດຈາກຄວາມສາມາດໃໝ່ຍ້ອນວ່າພວກມັນຖືກປ່ອຍອອກມາ, ດັ່ງທີ່ພວກເຮົາໄດ້ເຮັດກັບ JS ແລະ CSS minification ບ່ອນທີ່ `esbuild` ອະນຸຍາດໃຫ້ Vite ໄດ້ຮັບການເພີ່ມປະສິດທິພາບໃນຂະນະທີ່ຫຼີກເວັ້ນການຂັດຂວາງລະບົບນິເວດຂອງມັນ.
 
-## How is Vite Different from X?
+## ແລ້ວ Vite ມັນແຕກຕ່າງຈາກ X ແນວໃດ?
 
-You can check out the [Comparisons](./comparisons) section for more details on how Vite differs from other similar tools.
+ທ່ານສາມາດເບິ່ງ ຫົວຂໍ້ [ການປຽບທຽບ](./comparisons) ສຳລັບລາຍລະອຽດເພີ່ມເຕີມວ່າ Vite ຕ່າງຈາກເຄື່ອງມືທີໃກ້ຄຽງແນວໃດ.
