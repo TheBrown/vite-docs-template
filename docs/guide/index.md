@@ -1,32 +1,32 @@
-# Getting Started
+# ເລີ່ມຕົ້ນໃຊ້ງານ
 
 <audio id="vite-audio">
   <source src="/vite.mp3" type="audio/mpeg">
 </audio>
 
-## Overview
+## ພາບລວມ
 
-Vite (French word for "quick", pronounced `/vit/`<button style="border:none;padding:3px;border-radius:4px;vertical-align:bottom" id="play-vite-audio" onclick="document.getElementById('vite-audio').play();"><svg style="height:2em;width:2em"><use href="/voice.svg#voice" /></svg></button>, like "veet") is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:
+Vite (ໃນພາສາຝຣັ່ງຄຳວ່າ "ດ່ວນ", ອ່ານວ່າ `/vit/`<button style="border:none;padding:3px;border-radius:4px;vertical-align:bottom" id="play-vite-audio" onclick="document.getElementById('vite-audio').play();"><svg style="height:2em;width:2em"><use href="/voice.svg#voice" /></svg></button>, ຄືກັນກັບ "veet") ແມ່ນ build tool ທີ່ມີຈຸດປະສົງເພື່ອສະໜອງປະສົບການ ການພັດທະນາທີ່ວ່ອງໄວ ແລະ ຄ່ອງໂຕສຳລັບ modern web project. ມັນປະກອບດ້ວຍ 2 ສ່ວນໃຫຍ່ໆຄື:
 
-- A dev server that provides [rich feature enhancements](./features) over [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), for example extremely fast [Hot Module Replacement (HMR)](./features#hot-module-replacement).
+- dev server ທີ່ສະໜອງ [ການປັບປຸງຄຸນລັກສະນະທີ່ຫຼາກຫຼາຍ](./features) ເໜືອ [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), ຕົວຢ່າງເຊັ່ນ: ໄວຫຼາຍ [Hot Module Replacement (HMR)](./features#hot-module-replacement).
 
-- A build command that bundles your code with [Rollup](https://rollupjs.org), pre-configured to output highly optimized static assets for production.
+- build command ທີ່ bundle code ຂອງທ່ານດ້ວຍ [Rollup](https://rollupjs.org), ການ pre-configured ເພື່ອໃຫ້ຜົນລັບທີ່ໄດ້ static assets ທີ່ຜ່ານການ optimize ເປັນຢ່າງສູງ ແລະ ພ້ອມສຳລັບ production.
 
-Vite is opinionated and comes with sensible defaults out of the box, but is also highly extensible via its [Plugin API](./api-plugin) and [JavaScript API](./api-javascript) with full typing support.
+Vite ແມ່ນມີຄວາມຄິດເຫັນ ແລະ ມາພ້ອມກັບການຕັ້ງຄ່າເລີ່ມຕົ້ນທີ່ສົມເຫດສົມຜົນ ແຕ່ຍັງສາມາດຂະຫຍາຍໄດ້ສູງຜ່ານ [Plugin API](./api-plugin) ແລະ [JavaScript API](./api-javascript) ຂອງມັນເອງ ດ້ວຍການຮອງຮັບ typing ຢ່າງເຕັມຮູບແບບ.
 
-You can learn more about the rationale behind the project in the [Why Vite](./why) section.
+ທ່ານສາມາດຮຽນຮູ້ເພີ່ມເຕີມກ່ຽວກັບຈຸດປະສົງທີ່ຢູ່ເບື້ອງຫຼັງຂອງໂຄງການໄດ້ໃນຫົວຂໍ້ [ເປັນຫຍັງຕ້ອງເປັນ Vite](./why).
 
-## Browser Support
+## ການສະໜັບສະໜູນ Browser
 
-The default build targets browsers that support [native ES Modules](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta). Legacy browsers can be supported via the official [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) - see the [Building for Production](./build) section for more details.
+ເປົ້າໝາຍ build ຂອງ Browser ເລີ່ມຕົ້ນທີ່ຮອງຮັບ [native ES Modules](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), ແລະ [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta). Browser ລຸ້ນເກົ່າສາມາດຮອງຮັບໄດ້ຜ່ານ [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) - ເບິ່ງຫົວຂໍ້ [Building for Production](./build) ສຳລັບລາຍລະອຽດເພີ່ມເຕີມ.
 
-## Trying Vite Online
+## ລອງໃຊ້ Vite Online
 
-You can try Vite online on [StackBlitz](https://vite.new/). It runs the Vite-based build setup directly in the browser, so it is almost identical to the local setup but doesn't require installing anything on your machine. You can navigate to `vite.new/{template}` to select which framework to use.
+ທ່ານສາມາດລອງໃຊ້ Vite online ໄດ້ທີ່ [StackBlitz](https://vite.new/). ມັນຈະແລ່ນການຕັ້ງຄ່າ Vite-based build ໂດຍກົງໃນ browser, ສະນັ້ນມັນເກືອບຈະຄືກັນກັບການຕັ້ງຄ່າແບບ local ແຕ່ມັນບໍ່ໄດ້ຕ້ອງການໃຫ້ຕິດຕັ້ງຫຍັງໃນເຄື່ອງຂອງທ່ານ. ທ່ານສາມາດໄປທີ່ `vite.new/{template}` ແລ້ວເລືອກ framework ທີ່ຕ້ອງການໃຊ້.
 
-The supported template presets are:
+ແມ່ແບບ preset ທີ່ຮອງຮັບມີຄື:
 
-|             JavaScript              |                TypeScript                 |
+|             ສຳລັບ JavaScript              |                ສຳລັບ TypeScript                 |
 | :---------------------------------: | :---------------------------------------: |
 | [vanilla](https://vite.new/vanilla) | [vanilla-ts](https://vite.new/vanilla-ts) |
 |     [vue](https://vite.new/vue)     |     [vue-ts](https://vite.new/vue-ts)     |
@@ -35,39 +35,39 @@ The supported template presets are:
 |     [lit](https://vite.new/lit)     |     [lit-ts](https://vite.new/lit-ts)     |
 |  [svelte](https://vite.new/svelte)  |  [svelte-ts](https://vite.new/svelte-ts)  |
 
-## Scaffolding Your First Vite Project
+## ສ້າງໂປເຈັກ Vite ທຳອິດຂອງທ່ານ
 
-::: tip Compatibility Note
-Vite requires [Node.js](https://nodejs.org/en/) version 14.18+, 16+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
+::: tip ໝາຍເຫດ ກ່ຽວກັບຄວາມເຂົ້າກັນໄດ້
+Vite ຕ້ອງການ [Node.js](https://nodejs.org/en/) version 14.18+, 16+. ເຖິງຢ່າງໃດກໍ່ຕາມ, ບາງ template ຕ້ອງການ Node.js version ທີ່ສູງກວ່າຈິງຈະສາມາດເຮັດວຽກໄດ້, ກະລຸນາອັບເກດ package manager ຂອງທ່ານຫາກມັນມີການແຈ້ງເຕືອນກ່ຽວກັບບັນຫາດັ່ງກ່າວ.
 :::
 
-With NPM:
+ດ້ວຍ NPM:
 
 ```bash
 $ npm create vite@latest
 ```
 
-With Yarn:
+ດ້ວຍ Yarn:
 
 ```bash
 $ yarn create vite
 ```
 
-With PNPM:
+ດ້ວຍ PNPM:
 
 ```bash
 $ pnpm create vite
 ```
 
-Then follow the prompts!
+ຈາກນັ້ນປະຕິບັດຕາມຄຳແນະນຳ!
 
-You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite + Vue project, run:
+ທ່ານຍັງສາມາດລະບຸຊື່ project ແລະ template ທີ່ທ່ານຕ້ອງການນຳໃຊ້ຜ່ານຕົວເລືອກ command line. ຕົວຢ່າງ, ຈະສ້າງ Vite + Vue project, ແລ່ນ:
 
 ```bash
 # npm 6.x
 npm create vite@latest my-vue-app --template vue
 
-# npm 7+, extra double-dash is needed:
+# npm 7+, ເຄື່ອງໝາຍ -- ທີ່ເກີນ ແມ່ນຕ້ອງໄດ້ໃສ່:
 npm create vite@latest my-vue-app -- --template vue
 
 # yarn
@@ -77,11 +77,11 @@ yarn create vite my-vue-app --template vue
 pnpm create vite my-vue-app --template vue
 ```
 
-See [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) for more details on each supported template: `vanilla`, `vanilla-ts`, `vue`, `vue-ts`, `react`, `react-ts`, `react-swc`, `react-swc-ts`, `preact`, `preact-ts`, `lit`, `lit-ts`, `svelte`, `svelte-ts`.
+ເບິ່ງ [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) ສຳລັບລາຍລະອຽດເພີ່ມເຕີມໃນແຕ່ລະ template ທີ່ support ເຊັ່ນ: `vanilla`, `vanilla-ts`, `vue`, `vue-ts`, `react`, `react-ts`, `react-swc`, `react-swc-ts`, `preact`, `preact-ts`, `lit`, `lit-ts`, `svelte`, `svelte-ts`.
 
-## Community Templates
+## Template ຈາກຊຸມຊົນ
 
-create-vite is a tool to quickly start a project from a basic template for popular frameworks. Check out Awesome Vite for [community maintained templates](https://github.com/vitejs/awesome-vite#templates) that include other tools or target different frameworks. You can use a tool like [degit](https://github.com/Rich-Harris/degit) to scaffold your project with one of the templates.
+create-vite ເປັນເຄື່ອງມືທີ່ໃຊ້ສ້າງ project ທີ່ໄວ ຈາກ template ເລີ່ມຕົ້ນ ສຳລັບ framework ທີ່ໄດ້ຮັບຄວາມນິຍົມ. ເບິ່ງ Awesome Vite ສຳລັບ [templates ທີ່ເບິ່ງແຍງໂດຍຊຸມຊົນ](https://github.com/vitejs/awesome-vite#templates) ທີ່ຮວບຮ່ວມເຄື່ອງມືອື່ນໆ ຫຼື target framework ທີ່ແຕກຕ່າງກັນ. ທ່ານສາມາດໃຊ້ເຄື່ອງມືຢ່າງ [degit](https://github.com/Rich-Harris/degit) ເພື່ອສ້າງ project ຂອງທ່ານດ້ວຍໜຶ່ງໃນ template.
 
 ```bash
 npx degit user/project my-project
@@ -91,29 +91,29 @@ npm install
 npm run dev
 ```
 
-If the project uses `main` as the default branch, suffix the project repo with `#main`
+ຖ້າ project ໃຊ້ `main` ເປັນ default branch, ໃຫ້ຕໍ່ທ້າຍ project repo ດ້ວຍ `#main`
 
 ```bash
 npx degit user/project#main my-project
 ```
 
-## `index.html` and Project Root
+## `index.html` ແລະ Project Root
 
-One thing you may have noticed is that in a Vite project, `index.html` is front-and-central instead of being tucked away inside `public`. This is intentional: during development Vite is a server, and `index.html` is the entry point to your application.
+ໜຶ່ງສິ່ງທີ່ທ່ານອາດຈະສັງເກດເຫັນໃນ project Vite ແມ່ນ, `index.html` ຈະຢູ່ໃນດ້ານໜ້າ ແລະ ທາງກາງ ແທນທີ່ຈະຢູ່ໃນໂຟເດີ `public`. ນີ້ແມ່ນຄວາມຕັ້ງໃຈ: ໃນລະຫວ່າງການພັດທະນາ Vite ແມ່ນ server, ແລະ `index.html` ເປັນບ່ອນທຳອິດໄປຍັງແອັບພິເຄຊັ່ນຂອງທ່ານ.
 
 Vite treats `index.html` as source code and part of the module graph. It resolves `<script type="module" src="...">` that references your JavaScript source code. Even inline `<script type="module">` and CSS referenced via `<link href>` also enjoy Vite-specific features. In addition, URLs inside `index.html` are automatically rebased so there's no need for special `%PUBLIC_URL%` placeholders.
 
-Similar to static http servers, Vite has the concept of a "root directory" which your files are served from. You will see it referenced as `<root>` throughout the rest of the docs. Absolute URLs in your source code will be resolved using the project root as base, so you can write code as if you are working with a normal static file server (except way more powerful!). Vite is also capable of handling dependencies that resolve to out-of-root file system locations, which makes it usable even in a monorepo-based setup.
+ຄ້າຍຄືກັນກັບ static http server, Vite ມີແນວຄວາມຄິດຂອງ "root directory" ທີ່ແລ່ນຟາຍຂອງທ່ານ. ທ່ານຈະເຫັນວ່າມັນອ້າງອີງເປັນ `<root>` ໂດຍທັງໝົດຂອງເອກະສານ. Absolute URL ໃນ source code ຂອງທ່ານຈະຖືກເຫັນໄດ້ຈາກ project root ທີ່ເປັນຈຸດເລີ່ມຕົ້ນ, ສະນັ້ນທ່ານຈິງສາມາດຂຽນ code ໄດ້ຄືກັນກັບວ່າທ່ານກຳລັງເຮັດວຽກກັບ static file server ທົ່ວໄປ (ຍົກເວັ້ນວິທີການທີ່ມີປະສິດທິພາບຫຼາຍກວ່າ!). Vite ຍັງສາມາດຈັດການກັບ dependency ທີ່ບໍ່ໄດ້ຢູ່ໃນ root file system, ເຊິ່ງເຮັດໃຫ້ສາມາດເຮັດວຽກໄດ້ແມ້ແຕ່ການຕັ້ງຄ່າແບບ monorepo-based.
 
-Vite also supports [multi-page apps](./build#multi-page-app) with multiple `.html` entry points.
+Vite ຍັງຮອງຮັບ [multi-page apps](./build#multi-page-app) ທີ່ມີຈຸດເຂົ້າໃຊ້ `.html` ຫຼາຍຈຸດ.
 
-#### Specifying Alternative Root
+#### ການລະບຸ Alternative Root
 
-Running `vite` starts the dev server using the current working directory as root. You can specify an alternative root with `vite serve some/sub/dir`.
+ການເອີ້ນໃຊ້ `vite` ຈະແລ່ນ dev server ໂດຍໃຊ້ directory ທີ່ກຳລັງເຮັດວຽກປັດຈຸບັນໃຫ້ເປັນ root. ທ່ານສາມາດລະບຸ root ອື່ນດ້ວຍ `vite serve some/sub/dir`.
 
 ## Command Line Interface
 
-In a project where Vite is installed, you can use the `vite` binary in your npm scripts, or run it directly with `npx vite`. Here are the default npm scripts in a scaffolded Vite project:
+ໃນ project ທີ່ຕິດຕັ້ງ Vite, ທ່ານສາມາດໃຊ້ `vite` binary ໃນ script npm ຂອງທ່ານ, ຫຼື ແລ່ນມັນໂດຍກົງດ້ວຍ `npx vite`. ນີ້ແມ່ນ script npm ເລີ່ມຕົ້ນໃນການສ້າງ project Vite:
 
 <!-- prettier-ignore -->
 ```json
@@ -126,13 +126,13 @@ In a project where Vite is installed, you can use the `vite` binary in your npm 
 }
 ```
 
-You can specify additional CLI options like `--port` or `--https`. For a full list of CLI options, run `npx vite --help` in your project.
+ທ່ານສາມາດລະບຸຕົວເລືອກ CLI ເພີ່ມເຕີມເຊັ່ນ `--port` ຫຼື `--https`. ສຳລັບລາຍການຕົວເລືອກທັງໝົດຂອງ CLI, ແລ່ນ `npx vite --help` ໃນ project ຂອງທ່ານ.
 
-Learn more about the [Command Line Interface](./cli.md)
+ຮຽນຮູ້ເພີ່ມເຕີມກ່ຽວກັບ [Command Line Interface](./cli.md)
 
-## Using Unreleased Commits
+## ການໃຊ້ Commit ທີ່ຍັງບໍ່ທັນ release
 
-If you can't wait for a new release to test the latest features, you will need to clone the [vite repo](https://github.com/vitejs/vite) to your local machine and then build and link it yourself ([pnpm](https://pnpm.io/) is required):
+ຖ້າທ່ານບໍ່ສາມາດລໍຖ້າ release ໃໝ່ ເພື່ອ test ຄຸນສົມບັດຫຼ້າສຸດ, ທ່ານຕ້ອງໄດ້ clone [vite repo](https://github.com/vitejs/vite) ລົງໃນເຄື່ອງຂອງທ່ານ ຈາກນັ້ນ build ແລະ link ມັນດ້ວຍໂຕທ່ານເອງ ([pnpm](https://pnpm.io/) ແມ່ນຕ້ອງການ):
 
 ```bash
 git clone https://github.com/vitejs/vite.git
@@ -143,8 +143,8 @@ pnpm run build
 pnpm link --global # use your preferred package manager for this step
 ```
 
-Then go to your Vite based project and run `pnpm link --global vite` (or the package manager that you used to link `vite` globally). Now restart the development server to ride on the bleeding edge!
+ຈາກນັ້ນໄປທີ່ project Vite ຂອງທ່ານ ແລະ ແລ່ນ `pnpm link --global vite` (ຫຼຶ package manager ທີ່ທ່ານໃຊ້ເພື່ອ link `vite` ໝົດເຄື່ອງ). ຕອນນີ້ທຳການ restart development server ເພື່ອພັດທະນາເອງຢ່າງອິດສະຫຼະ!
 
-## Community
+## ຊຸມຊົນ
 
-If you have questions or need help, reach out to the community at [Discord](https://chat.vitejs.dev) and [GitHub Discussions](https://github.com/vitejs/vite/discussions).
+ຖ້າທ່ານມີຄຳຖາມ ຫຼື ຕ້ອງການຄວາມຊ່ວຍເຫຼືອ, ກະລຸນາຕິດຕໍ່ຫາຊຸມຊົນ [Discord](https://chat.vitejs.dev) ແລະ [GitHub Discussions](https://github.com/vitejs/vite/discussions).
