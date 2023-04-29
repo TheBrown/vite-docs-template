@@ -190,7 +190,7 @@ export default defineConfig({
               link: '/guide/',
             },
             {
-              text: 'ຄຸນສົມບັດ',
+              text: 'ຄຸນນະສົມບັດ',
               link: '/guide/features',
             },
             {
