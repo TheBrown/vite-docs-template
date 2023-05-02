@@ -1,21 +1,21 @@
-# Comparisons
+# ການປຽບທຽບ
 
 ## WMR
 
-[WMR](https://github.com/preactjs/wmr) by the Preact team provides a similar feature set, and Vite 2.0's support for Rollup's plugin interface is inspired by it.
+[WMR](https://github.com/preactjs/wmr) ໂດຍ Preact team ມີຊຸດ feature ທີ່ຄ້າຍກັນ ແລະ ການສະໜັບສະໜູນ interface plugin ຂອງ Rollup ຂອງ Vite 2.0 ໄດ້ຮັບແຮງບັນດານໃຈມາຈາກຊຸດດັ່ງກ່າວ.
 
-WMR is mainly designed for [Preact](https://preactjs.com/) projects, and offers more integrated features such as pre-rendering. In terms of scope, it's closer to a Preact meta framework, with the same emphasis on compact size as Preact itself. If you are using Preact, WMR is likely going to offer a more fine-tuned experience.
+WMR ໄດ້ຮັບການອອກແບບມາສຳລັບ project [Preact](https://preactjs.com/) ເປັນຫຼັກ ແລະ ນຳສະເໜີລັກສະນະປະສົມປະສານຫຼາຍຂຶ້ນເຊັ່ນ: pre-rendering. ໃນແງ່ຂອງຂອບເຂດ, ມັນໃກ້ຄຽງກັບ Preact meta framework, ໂດຍເນັ້ນໄປທີ່ຂະໜາດທີ່ກະທັດຮັດເຊັ່ນດຽວກັບ Preact. ຫາກທ່ານໃຊ້ Preact, WMR ມີແນວໂນວທີ່ຈະມອບປະສົບການທີ່ປັບແຕ່ງໄດ້ລະອຽດຂຶ້ນ. 
 
 ## @web/dev-server
 
-[@web/dev-server](https://modern-web.dev/docs/dev-server/overview/) (previously `es-dev-server`) is a great project and Vite 1.0's Koa-based server setup was inspired by it.
+[@web/dev-server](https://modern-web.dev/docs/dev-server/overview/) (ກ່ອນໜ້ານີ້ແມ່ນ `es-dev-server`) ເປັນ project ທີ່ດີຫຼາຍ ແລະ ການຕັ້ງຄ່າ server ທີ່ໃຊ້ Koa ຂອງ Vite 1.0 ໄດ້ຮັບແຮງບັນດານໃຈມາຈາກ project ນີ້.
 
-`@web/dev-server` is a bit lower-level in terms of scope. It does not provide official framework integrations, and requires manually setting up a Rollup configuration for the production build.
+`@web/dev-server` ຢູ່ໃນລະດັບຕໍ່າກວ່າໜ້ອຍໜຶ່ງໃນມຸມມອງຂອງຂອບເຂດ. ບໍ່ມີການລວມ framework ຢ່າງເປັນທາງການ ແລະ ຈຳເປັນຕ້ອງໄດ້ຕັ້ງຄ່າ Rollup configuration ດ້ວຍຕົນເອງສຳລັບ production build.
 
-Overall, Vite is a more opinionated / higher-level tool that aims to provide a more out-of-the-box workflow. That said, the `@web` umbrella project contains many other excellent tools that may benefit Vite users as well.
+ໂດຍລວມແລ້ວ, Vite ເປັນເຄື່ອງມືທີ່ມີຄວາມຄິດເຫັນ/ລະດັບທີ່ສູງກວ່າ ເຊີ່ງມີຈຸດປະສົງເພື່ອໃຫ້ເຮັດວຽກນອກກອບຫຼາຍຂຶ້ນ. ດັ່ງທີ່ເວົ້າວ່າ, project `@web` umbrella ມີເຄື່ອງມືທີ່ດີຫຼາຍອື່ນໆທີ່ອາດເປັນປະໂຫຍດຕໍ່ຜູ້ໃຊ້ Vite ເຊັ່ນດຽວກັນ.
 
 ## Snowpack
 
-[Snowpack](https://www.snowpack.dev/) was also a no-bundle native ESM dev server, very similar in scope to Vite. The project is no longer being maintained. The Snowpack team is now working on [Astro](https://astro.build/), a static site builder powered by Vite. The Astro team is now an active player in the ecosystem, and they are helping to improve Vite.
+[Snowpack](https://www.snowpack.dev/) ຍັງເປັນ native ESM dev server ບໍ່ມີ bundle ຊື່ງຄ້າຍກັບ Vite ຫຼາຍ. Project ນີ້ບໍ່ໄດ້ຮັບການເບິ່ງແຍງອີກຕໍ່ໄປ. Snowpack team ກຳລັງພັດທະນາ [Astro](https://astro.build/), ເຄື່ອງມືສ້າງ static site ທີ່ຂັບເຄື່ອນໂດຍ Vite. Astro team ເປັນຜູ້ກະຕືລືລົ້ນໃນ ecosystem, ແລະ ພວກເຂົາໄດ້ຊ່ວຍໃນການປັບປຸງ Vite.
 
-Aside from different implementation details, the two projects shared a lot in terms of technical advantages over traditional tooling. Vite's dependency pre-bundling is also inspired by Snowpack v1 (now [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)). Some of the main differences between the two projects are listed in [the v2 Comparisons Guide](https://v2.vitejs.dev/guide/comparisons).
+ນອກເໜືອຈາກລາຍລະອຽດການໃຊ້ງານທີ່ແຕກຕ່າງກັນແລ້ວ, ທັງສອງ project ມີຂໍ້ໄດ້ປຽບທາງເຕັກນິກຮ່ວມກັນເປັນຢ່າງຫຼາຍເມື່ອທຽບກັບເຄື່ອງມືແບບດັ້ງເດີມ. Vite's dependency pre-bundling ນັ້ນມີແຮງບັນດານໃຈມາຈາກ Snowpack v1 (ດຽວນີ້ [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)). ຄວາມແຕກຕ່າງຫຼັກບາງປະການຂອງສອງ project ສະແດງໃນ [ຄູ່ມືການປຽບທຽບ v2](https://v2.vitejs.dev/guide/comparisons).
