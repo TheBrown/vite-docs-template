@@ -1,10 +1,10 @@
-# Using Plugins
+# ການໃຊ້ Plugins
 
-Vite can be extended using plugins, which are based on Rollup's well-designed plugin interface with a few extra Vite-specific options. This means that Vite users can rely on the mature ecosystem of Rollup plugins, while also being able to extend the dev server and SSR functionality as needed.
+Vite ສາມາດຂະຫຍາຍໄດ້ໂດຍການໃຊ້ plugin, ຊື່ງໃຊ້ interface ທີ່ຖືກອອກແບບມາເປັນຢ່າງດີຂອງ Rollup ພ້ອມໂຕເລືອກພິເສດສະເພາະຂອງ Vite ສອງສາມໂຕ. ໝາຍຄວາມວ່າຜູ້ໃຊ້ Vite ສາມາດອາໄສລະບົບນິເວດຂອງ Rollup plugins, ໃນຂະນະດຽວກັນກໍສາມາດຂະຫຍາຍ dev server ແລະ SSR functionality ໄດ້ຕາມຕ້ອງການ.
 
-## Adding a Plugin
+## ການເພີ່ມ Plugin
 
-To use a plugin, it needs to be added to the `devDependencies` of the project and included in the `plugins` array in the `vite.config.js` config file. For example, to provide support for legacy browsers, the official [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) can be used:
+ຈະໃຊ້ plugin, ມັນຕ້ອງໄດ້ເພີ່ມເຂົ້າໃນ `devDependencies` ຂອງ project ແລະ ຮ່ວມໄວ້ໃນ array ຂອງ `plugins` ໃນຟາຍ config. ຕົວຢ່າງ, ເພື່ອໃຫ້ການສະໜັບສະໜູບ browser ລຸ້ນເກົ່າ. ສາມາດໃຊ້ ່[@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) ທີ່ເປັນທາງການໄດ້.
 
 ```
 $ npm add -D @vitejs/plugin-legacy
@@ -23,28 +23,27 @@ export default defineConfig({
   ],
 })
 ```
+`plugins` ຍັງຍອມຮັບຄ່າທີ່ຕັ້ງໄວ້ລ່ວງໜ້າລວມເຖິງ plugin ຫຼາຍໂຕທີ່ລວມເປັນໂຕດຽວ. ນີ້ເປັນປະໂຫຍດສຳລັບ feature ທີ່ຊັບຊ້ອນ (ເຊັ່ນ framework integration) ທີ່ໃຊ້ງານໂດຍ plugin ຫຼາຍອັນ. Array ຈະຖືກປັບໃຫ້ນ້ອຍລົງພາຍໃນ.
 
-`plugins` also accepts presets including several plugins as a single element. This is useful for complex features (like framework integration) that are implemented using several plugins. The array will be flattened internally.
+plugin ປອມຈະຖືກ ignore, ຊື່ງສາມາດໃຊ້ເພື່ອການເປີດໃຊ້ງານ ຫຼື  ການປິດໃຊ້ງານ plugin ໄດ້ຢ່າງງ່າຍດາຍ.
 
-Falsy plugins will be ignored, which can be used to easily activate or deactivate plugins.
+## ຄົ້ນຫາ Plugin
 
-## Finding Plugins
-
-:::tip NOTE
-Vite aims to provide out-of-the-box support for common web development patterns. Before searching for a Vite or compatible Rollup plugin, check out the [Features Guide](../guide/features.md). A lot of the cases where a plugin would be needed in a Rollup project are already covered in Vite.
+:::tip ໝາຍເຫດ
+Vite ມີເປົ້າໝາຍເພື່ອສະໜັບສະໜູນນອກກອບສຳລັບຮູບແບບການພັດທະນາເວັບທົ່ວໄປ. ກ່ອນຄົ້ນຫາ Vite ຫຼື Rollup plugin ທີ່ເຂົ້າກັນໄດ້, ເບິ່ງທີ່ [ຄູ່ມື Feature](../guide/features.md). ຫຼາຍໆກໍລະນີຕ້ອງໄດ້ໃຊ້ plugin ໃນ Rollup project ທີ່ໄດ້ຄອບຄຸມໄວ້ແລ້ວໃນ Vite.
 :::
 
-Check out the [Plugins section](../plugins/) for information about official plugins. Community plugins are listed in [awesome-vite](https://github.com/vitejs/awesome-vite#plugins). For compatible Rollup plugins, check out [Vite Rollup Plugins](https://vite-rollup-plugins.patak.dev) for a list of compatible official Rollup plugins with usage instructions or the [Rollup Plugin Compatibility section](../guide/api-plugin#rollup-plugin-compatibility) in case it is not listed there.
+ເບິ່ງທີ່ [ຫົວຂໍ້ Plugins](../plugins/) ສຳລັບຂໍ້ມູນ plugin ທີ່ເປັນທາງການ. Community plugins ແມ່ນຢູ່ໃນ [awesome-vite](https://github.com/vitejs/awesome-vite#plugins). ສຳລັບ Rollup plugins ທີ່ສາມາດເຂົ້າກັນໄດ້, ເບິ່ງທີ່ [Vite Rollup Plugins](https://vite-rollup-plugins.patak.dev) ເພື່ອເບິ່ງລາຍການ plugin ຢ່າງເປັນທາງການທີ່ສາມາດເຂົ້າກັນໄດ້ພ້ອມຄຳແນະນຳການໃຊ້ງານ ຫຼື [ຫົວຂໍ້ Rollup Plugin Compatibility](../guide/api-plugin#rollup-plugin-compatibility) ໃນກໍລະນີທີ່ບໍ່ໄດ້ຢູ່ໃນລາຍການ.
 
-You can also find plugins that follow the [recommended conventions](./api-plugin.md#conventions) using a [npm search for vite-plugin](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity) for Vite plugins or a [npm search for rollup-plugin](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity) for Rollup plugins.
+ທ່ານສາມາດຄົ້ນຫາ plugin ທີ່ເປັນໄປຕາມ [ຂໍ້ກຳນົດທີ່ແນະນຳ](./api-plugin.md#conventions) ໂດຍໃຊ້ [npm ຄົ້ນຫາສຳລັບ vite-plugin](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity) ສຳລັບ Vite plugin ຫຼື [npm ຄົ້ນຫາສຳລັບ rollup-plugin](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity) ສຳລັບ Rollup plugin.
 
-## Enforcing Plugin Ordering
+## ບັງຄັບການໃຊ້ Plugin
 
-For compatibility with some Rollup plugins, it may be needed to enforce the order of the plugin or only apply at build time. This should be an implementation detail for Vite plugins. You can enforce the position of a plugin with the `enforce` modifier:
+ສຳລັບຄວາມເຂົ້າກັນໄດ້ຂອງ Rollup plugin, ອາດຈຳເປັນຕ້ອງບັງຄັບໃຊ້ຄຳສັ່ງຂອງ plugin ຫຼື ໃຊ້ສະເພາະຕອນສ້າງເທົ່ານັ້ນ. ນີ້ຄວນເປັນລາຍລະອຽດການໃຊ້ງານສຳລັບ Vite plugin. ທ່ານສາມາດບັງຄັບໃຊ້ຕຳແໜ່ງຂອງ plugin ດ້ວຍ `enforce` modifier:
 
-- `pre`: invoke plugin before Vite core plugins
-- default: invoke plugin after Vite core plugins
-- `post`: invoke plugin after Vite build plugins
+- `pre`: ເອີ້ນໃຊ້ plugin ກ່ອນ Vite core plugins
+- default: ເອີ້ນໃຊ້ plugin ຫຼັງ Vite core plugins
+- `post`: ເອີ້ນໃຊ້ plugin ຫຼັງ Vite build plugins
 
 ```js
 // vite.config.js
@@ -61,11 +60,11 @@ export default defineConfig({
 })
 ```
 
-Check out [Plugins API Guide](./api-plugin.md#plugin-ordering) for detailed information, and look out for the `enforce` label and usage instructions for popular plugins in the [Vite Rollup Plugins](https://vite-rollup-plugins.patak.dev) compatibility listing.
+ເບິ່ງທີ [ຄູ່ມື Plugins API](./api-plugin.md#plugin-ordering) ສຳລັບຂໍ້ມູນລາຍລະອຽດ, ແລະ ເບິ່ງຫາຄຳວ່າ `enforce` ແລະ ຄຳແນະນຳການໃຊ້ງານສຳລັບ plugin ຍອດນິຍົມທີ່ສາມາດໃຊ້ນຳກັນໄດ້ຂອງ [Vite Rollup Plugins](https://vite-rollup-plugins.patak.dev)
 
-## Conditional Application
+## ແອັບພິເຄຊັ່ນທີ່ມີເງື່ອນໄຂ
 
-By default, plugins are invoked for both serve and build. In cases where a plugin needs to be conditionally applied only during serve or build, use the `apply` property to only invoke them during `'build'` or `'serve'`:
+ໂດຍຄ່າເລີ່ມຕົ້ນ, plugin ສາມາດຖືກເອີ້ນໃຊ້ໄດ້ໃນຕອນ serve ແລະ build. ໃນກໍລະນີທີ່ຈຳເປັນຕ້ອງໄດ້ໃຊ້ plugin ຢ່າງມີເງື່ອນໄຂສະເພາະລະຫວ່າງຕອນ serve ຫຼຶ build, ນຳໃຊ້ `apply` property ສຳລັບເອີ້ນໃຊ້ສະເພາະ `'build'` ຫຼື `'serve'`:
 
 ```js
 // vite.config.js
@@ -82,6 +81,6 @@ export default defineConfig({
 })
 ```
 
-## Building Plugins
+## ສ້າງ Plugin
 
-Check out the [Plugins API Guide](./api-plugin.md) for documentation about creating plugins.
+ເບິ່ງທີ່ [ຄູ່ມື Plugins API](./api-plugin.md) ສຳລັບເອກະສານກ່ຽວກັບການສ້າງ plugin.
