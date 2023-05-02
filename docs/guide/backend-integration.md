@@ -1,35 +1,35 @@
-# Backend Integration
+# ການເຊື່ອມຕໍ່ Backend
 
-:::tip Note
-If you want to serve the HTML using a traditional backend (e.g. Rails, Laravel) but use Vite for serving assets, check for existing integrations listed in [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends).
+:::tip ໝາຍເຫດ
+ຖ້າທ່ານຕ້ອງການ serve HTML ໂດຍໃຊ້ backend ແບບດັ່ງເດີມ (ຕົວຢ່າງ Rails, Laravel) ແຕ່ໃຊ້ Vite ສຳລັບສະແດງ assets, ກວດສອບການ Integration ທີ່ມີຢູ່ໃນ [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends).
 
-If you need a custom integration, you can follow the steps in this guide to configure it manually
+ຖ້າທ່ານຕ້ອງການການ integration ແບບກຳນົດເອງ, ທ່ານສາມາດເຮັດຕາມຂັ້ນຕອນໃນຄູ່ມືນີ້ເພື່ອກຳນົດຄ່າດ້ວຍຕົນເອງ.
 :::
 
-1. In your Vite config, configure the entry and enable build manifest:
+1. ໃນ Vite config, ໃຫ້ກຳນົດຄ່າລາຍການ ແລະ ເປີດໃຊ້ງານ build manifest:
 
    ```js
    // vite.config.js
    export default defineConfig({
      build: {
-       // generate manifest.json in outDir
+       // generate manifest.json ໃນ outDir
        manifest: true,
        rollupOptions: {
-         // overwrite default .html entry
+         // ຂຽນທັບ default .html ເລີ່ມຕົ້ນ
          input: '/path/to/main.js',
        },
      },
    })
    ```
 
-   If you haven't disabled the [module preload polyfill](/config/build-options.md#build-polyfillmodulepreload), you also need to import the polyfill in your entry
+   ຖ້າທ່ານບໍ່ໄດ້ເປີດໃຊ້ງານ [module preload polyfill](/config/build-options.md#build-polyfillmodulepreload), ທ່ານຕ້ອງໄດ້ import  polyfill ໃນລາຍການຂອງທ່ານນຳ
 
    ```js
    // add the beginning of your app entry
    import 'vite/modulepreload-polyfill'
    ```
 
-2. For development, inject the following in your server's HTML template (substitute `http://localhost:5173` with the local URL Vite is running at):
+2. ສຳລັບການພັດທະນາ, ໃສ່ສິ່ງຕໍ່ໄປນີ້ໃນ template HTML ຂອງ server ທ່ານ (ແທນທີ່ `http://localhost:5173` ດ້ວຍ local URL  ທີ່ Vite ກຳລັງແລ່ນຢູ່):
 
    ```html
    <!-- if development -->
@@ -37,14 +37,14 @@ If you need a custom integration, you can follow the steps in this guide to conf
    <script type="module" src="http://localhost:5173/main.js"></script>
    ```
 
-   In order to properly serve assets, you have two options:
+   ໃນການສະແດງ assets ຢ່າງເໝາະສົມ, ທ່ານມີ 2 ທາງເລືອກ:
 
-   - Make sure the server is configured to proxy static assets requests to the Vite server
-   - Set [`server.origin`](/config/server-options.md#server-origin) so that generated asset URLs will be resolved using the back-end server URL instead of a relative path
+   - ກວດສອບໃຫ້ແນ່ໃຈວ່າ server ໄດ້ຮັບການກຳນົດຄ່າໃຫ້ static proxy ຮ້ອງຂໍ asset ໄປຍັງ Vite server 
+   - ຕັ້ງ [`server.origin`](/config/server-options.md#server-origin) ເພື່ອໃຫ້ URL ເນື້ອຫາທີ່ສ້າງຂຶ້ນໄດ້ຮັບການແກ້ໄຂໂດຍໃຊ້ URL back-end server ແທນ relative path 
 
-   This is needed for assets such as images to load properly.
+   ສິ່ງນີ້ຈຳເປັນສຳລັບ asset. ຕົວຢ່າງ image ເພື່ອໃຫ້ໂຫຼດໄດ້ຢ່າງຖືກຕ້ອງ.
 
-   Note if you are using React with `@vitejs/plugin-react`, you'll also need to add this before the above scripts, since the plugin is not able to modify the HTML you are serving:
+   ໃຫ້ຮູ້ວ່າຫາກທ່ານໃຊ້ React ກັບ `@vitejs/plugin-react`, ທ່ານຈະຕ້ອງເພີ່ມສິ່ງນີ້ກ່ອນ script ທາງເທິງ, ເນື່ອງຈາກ plugin ບໍ່ສາມາດແກ້ໄຂ HTML ທີ່ທ່ານກຳລັງໃຫ້ບໍລິການຢຸ່:
 
    ```html
    <script type="module">
@@ -56,7 +56,7 @@ If you need a custom integration, you can follow the steps in this guide to conf
    </script>
    ```
 
-3. For production: after running `vite build`, a `manifest.json` file will be generated alongside other asset files. An example manifest file looks like this:
+3. ສຳລັບ production: ຫຼັງຈາກແລ່ນ `vite build`,  ຟາຍ `manifest.json` ກໍຈະຖືກສ້າງຂຶ້ນພ້ອມຟາຍ asset ອື່ນ. ຕົວຢ່າງ ຟາຍ manifest ແມ່ນປະມານນີ້:
 
    ```json
    {
@@ -80,12 +80,12 @@ If you need a custom integration, you can follow the steps in this guide to conf
    }
    ```
 
-   - The manifest has a `Record<name, chunk>` structure
-   - For entry or dynamic entry chunks, the key is the relative src path from project root.
-   - For non entry chunks, the key is the base name of the generated file prefixed with `_`.
-   - Chunks will contain information on its static and dynamic imports (both are keys that map to the corresponding chunk in the manifest), and also its corresponding CSS and asset files (if any).
-
-   You can use this file to render links or preload directives with hashed filenames (note: the syntax here is for explanation only, substitute with your server templating language):
+   - Manifest ມີໂຄ່ງສ້າງ `Record<name, chunk>`
+   - ສຳລັບລາຍການ ຫຼື ລາຍການແບບ dynamic, key ຄື relative src path ຈາກ project root.
+   - ສຳລັບລາຍການທີ່ບໍ່ໄດ້ລະບຸ, key ແມ່ນຊື່ຖານຂອງຟາຍທີ່ສ້າງຂຶ້ນເຊິ່ງນຳດ້ວຍ `_`.   
+   - Chunk ຈະມີຂໍ້ມູນກ່ຽວກັບການນຳເຂົ້າແບບ static ແລະ dynamic (ທັງສອງແມ່ນ key ທີ່ map ກັບ chunk ທີ່ສອດຄອງໃນ manifest), ແລະ ຍັງສອດຄອງກັບ CSS ແລະ ຟາຍ asset (ຖ້າມີ).
+   
+   ທ່ານສາມາດໃຊ້ຟາຍນີ້ເພື່ອ render links ຫຼື preload directives ດ້ວຍ hashed filenames (ໝາຍເຫດ: syntax ໃນທີ່ນີ້ແມ່ນເພື່ອການອະທິບາຍເທົ່ານັ້ນ, ປ່ຽນແທນດ້ວຍ server templating language ຂອງທ່ານ):
 
    ```html
    <!-- if production -->
