@@ -1,6 +1,6 @@
 
 <!-- You can remove the following notice from your fork -->
-## This repo is a template for [Vite.js docs translation repositories](https://github.com/vitejs?q=docs). See [guide](/.github/CONTRIBUTING.md).
+## Repo ນີ້ແມ່ນ template ສຳລັບ [ການແປເອກະສານ Vite.js repository](https://github.com/vitejs?q=docs). ເບິ່ງ [ຄູ່ມື](/.github/CONTRIBUTING.md).
 
 ---
 
@@ -20,28 +20,28 @@
 
 # Vite ⚡
 
-> Next Generation Frontend Tooling
+> ເຄື່ອງມື Frontend ລຸ້ນຕໍ່ໄປ
 
-- 💡 Instant Server Start
-- ⚡️ Lightning Fast HMR
-- 🛠️ Rich Features
+- 💡 ເລີ່ມເຊີເວີທັນທີ
+- ⚡️ HMR ໄວຟ້າຜ່າ
+- 🛠️ ຄຸນສົມບັດຄົບຄັນ
 - 📦 Optimized Build
 - 🔩 Universal Plugin Interface
-- 🔑 Fully Typed APIs
+- 🔑 Typed APIs ທີ່ຄົບຖ້ວນ
 
-Vite (French word for "quick", pronounced [`/vit/`](https://cdn.jsdelivr.net/gh/vitejs/vite@main/docs/public/vite.mp3), like "veet") is a new breed of frontend build tool that significantly improves the frontend development experience. It consists of two major parts:
+Vite (ໃນພາສາຝຣັ່ງຄຳວ່າ "ດ່ວນ", ອ່ານວ່າ `/vit/`, ຄືກັນກັບ "veet") ແມ່ນ build tool ທີ່ມີຈຸດປະສົງເພື່ອສະໜອງປະສົບການ ການພັດທະນາທີ່ວ່ອງໄວ ແລະ ຄ່ອງໂຕສຳລັບ modern web project. ມັນປະກອບດ້ວຍ 2 ສ່ວນໃຫຍ່ໆຄື:
 
-- A dev server that serves your source files over [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), with [rich built-in features](https://vitejs.dev/guide/features.html) and astonishingly fast [Hot Module Replacement (HMR)](https://vitejs.dev/guide/features.html#hot-module-replacement).
+- dev server ທີ່ສະໜອງ [ການປັບປຸງຄຸນລັກສະນະທີ່ຫຼາກຫຼາຍ](./features) ເໜືອ [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), ຕົວຢ່າງເຊັ່ນ: ໄວຫຼາຍ [Hot Module Replacement (HMR)](./features#hot-module-replacement).
 
-- A [build command](https://vitejs.dev/guide/build.html) that bundles your code with [Rollup](https://rollupjs.org), pre-configured to output highly optimized static assets for production.
+- build command ທີ່ bundle code ຂອງທ່ານດ້ວຍ [Rollup](https://rollupjs.org), ການ pre-configured ເພື່ອໃຫ້ຜົນລັບທີ່ໄດ້ static assets ທີ່ຜ່ານການ optimize ເປັນຢ່າງສູງ ແລະ ພ້ອມສຳລັບ production.
 
-In addition, Vite is highly extensible via its [Plugin API](https://vitejs.dev/guide/api-plugin.html) and [JavaScript API](https://vitejs.dev/guide/api-javascript.html) with full typing support.
+Vite ແມ່ນມີຄວາມຄິດເຫັນ ແລະ ມາພ້ອມກັບການຕັ້ງຄ່າເລີ່ມຕົ້ນທີ່ສົມເຫດສົມຜົນ ແຕ່ຍັງສາມາດຂະຫຍາຍໄດ້ສູງຜ່ານ [Plugin API](./api-plugin) ແລະ [JavaScript API](./api-javascript) ຂອງມັນເອງ ດ້ວຍການຮອງຮັບ typing ຢ່າງເຕັມຮູບແບບ
 
-[Read the Docs to Learn More](https://vitejs.dev).
+[ອ່ານເອກະສານເພື່ອຮຽນຮູ້ເພີ່ມເຕີມ](https://vitejs.dev).
 
 ## Packages
 
-| Package                                           | Version (click for changelogs)                                                                                                       |
+| Package                                           | Version (ຄິກເພື່ອເບິ່ງບັນທຶກການປ່ຽນແປງ)                                                                                                       |
 | ------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
 | [vite](packages/vite)                             | [![vite version](https://img.shields.io/npm/v/vite.svg?label=%20)](packages/vite/CHANGELOG.md)                                       |
 | [@vitejs/plugin-vue](packages/plugin-vue)         | [![plugin-vue version](https://img.shields.io/npm/v/@vitejs/plugin-vue.svg?label=%20)](packages/plugin-vue/CHANGELOG.md)             |
@@ -50,15 +50,15 @@ In addition, Vite is highly extensible via its [Plugin API](https://vitejs.dev/g
 | [@vitejs/plugin-legacy](packages/plugin-legacy)   | [![plugin-legacy version](https://img.shields.io/npm/v/@vitejs/plugin-legacy.svg?label=%20)](packages/plugin-legacy/CHANGELOG.md)    |
 | [create-vite](packages/create-vite)               | [![create-vite version](https://img.shields.io/npm/v/create-vite.svg?label=%20)](packages/create-vite/CHANGELOG.md)                  |
 
-## Contribution
+## ປະກອບສ່ວນ
 
-See [Contributing Guide](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md).
+ເບິ່ງ [ຄູ່ມືການປະກອບສ່ວນ](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md).
 
-## License
+## ໃບອະນຸຍາດ
 
 MIT
 
-## Sponsors
+## ຜູ້ສະໜັບສະໜູນ
 
 <p align="center">
   <a target="_blank" href="https://github.com/sponsors/yyx990803">
