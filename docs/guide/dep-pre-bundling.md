@@ -1,41 +1,41 @@
 # Dependency Pre-Bundling
 
-When you run `vite` for the first time, Vite prebundles your project dependencies before loading your site locally. It is done automatically and transparently by default.
+ເມື່ອທ່ານແລ່ນ `vite` ໃນຄັ້ງທຳອິດ, Vite prebundles project dependencies ຂອງທ່ານກ່ອນຈະໂຫຼດໜ້າເວັບຂອງທ່ານໃນເຄື່ອງ. ໂດຍອັດຕະໂນມັດ ແລະ ໂປ່ງໃສໃນຄ່າເລີ່ມຕົ້ນ.
 
-## The Why
+## ເປັນຫຍັງ
 
-This is Vite performing what we call "dependency pre-bundling". This process serves two purposes:
+ນີ້ແມ່ນ Vite ທີ່ສະແດງສິ່ງທີ່ເຮົາເອີ້ນວ່າ "dependency pre-bundling". ຂະບວນການນີ້ມີ 2 ຈຸດປະສົງ:
 
-1. **CommonJS and UMD compatibility:** During development, Vite's dev serves all code as native ESM. Therefore, Vite must convert dependencies that are shipped as CommonJS or UMD into ESM first.
+1. **ຄວາມເຂົ້າກັນໄດ້ຂອງ CommonJS ແລະ UMD:** ໃນລະຫວ່າງການພັດທະນາ, ນັກພັດທະນາ Vite ແລ່ນ code ທັງໝົດເປັນ native ESM. ດັ່ງນັ້ນ, Vite ຕ້ອງແປງ dependencies ທີ່ຖືກ shipped ເປັນ CommonJS ຫຼື UMD ເປັນ ESM ກ່ອນ.
 
-   When converting CommonJS dependencies, Vite performs smart import analysis so that named imports to CommonJS modules will work as expected even if the exports are dynamically assigned (e.g. React):
+   ເມືອແປງ CommonJS dependencies, Vite ດຳເນີນການວິເຄາະການ import ຢ່າງສະຫຼາດເພື່ອໃຫ້ named imports ໄປຍັງ CommonJS modules ຈະເຮັດວຽກໄດ້ຕາມທີ່ຄິດໄວ້ເຖິງວ່າການ exports ຈະຖືກກຳນົດແບບ dynamic (ເຊັ່ນ React):
 
    ```js
-   // works as expected
+   // ເຮັດວຽກໄດ້ຕາມທີ່ຄາດຄິດ
    import React, { useState } from 'react'
    ```
 
-2. **Performance:** Vite converts ESM dependencies with many internal modules into a single module to improve subsequent page load performance.
+2. **ປະສິດທິພາບ:** Vite ແປງ ESM dependencies ດ້ວຍ modules ພາຍໃນຈຳນວນຫຼາຍໃຫ້ເປັນ module ດຽວເພື່ອປັບປຸງປະສິດທິພາບການໂຫຼດໜ້າເວັບ.
 
-   Some packages ship their ES modules builds as many separate files importing one another. For example, [`lodash-es` has over 600 internal modules](https://unpkg.com/browse/lodash-es/)! When we do `import { debounce } from 'lodash-es'`, the browser fires off 600+ HTTP requests at the same time! Even though the server has no problem handling them, the large amount of requests create a network congestion on the browser side, causing the page to load noticeably slower.
+   ບາງ packages ໄດ້ ship ES modules ຂອງພວກເຂົາໂດຍສ້າງຟາຍແຍກກັນເປັນຈຳນວນຫຼາຍທີ່ນຳເຂົ້າອີກຟາຍໜື່ງ. ຕົວຢ່າງ, [`lodash-es` ມີຫຼາຍກວ່າ 600 modules ພາຍໃນ](https://unpkg.com/browse/lodash-es/)! ເມື່ອເຮົາ `import { debounce } from 'lodash-es'`, ບາວເຊີເລີ່ມຂໍ 600+ HTTP requests ໃນເວລາດຽວກັນ! ເຖິງວ່າເຊີເວີຈະບໍ່ມີບັນຫາໃນການຈັດການມັນ, ແຕ່ request ຈຳນວນຫຼາຍສ້າງຄວາມແອອັດຂອງ network ພາຍໃນບາວເຊີ, ເຮັດໃຫ້ໂຫຼດໜ້າເວັບຊ້າລົງຢ່າງເຫັນໄດ້ຊັດເຈນ.
 
-   By pre-bundling `lodash-es` into a single module, we now only need one HTTP request instead!
+   ໂດຍການ pre-bundling `lodash-es` ມາເປັນ single module, ພວກເຮົາຕ້ອງການພຽງ 1 HTTPS request ແທນ!
 
-::: tip NOTE
-Dependency pre-bundling only applies in development mode, and uses `esbuild` to convert dependencies to ESM. In production builds, `@rollup/plugin-commonjs` is used instead.
+::: tip ໝາຍເຫດ
+Dependency pre-bundling ແມ່ນໃຊ້ໄດ້ສະເພາະໃນ development mode ເທົ່ານັ້ນ, ແລະ ໃຊ້ `esbuild` ເພື່ອແປງ dependencies ເປັນ ESM. ໃນ production builds, ໃຊ້ `@rollup/plugin-commonjs` ແທນ .
 :::
 
-## Automatic Dependency Discovery
+## ການຫາ Dependency ໂດຍອັດຕະໂນມັດ
 
-If an existing cache is not found, Vite will crawl your source code and automatically discover dependency imports (i.e. "bare imports" that expect to be resolved from `node_modules`) and use these found imports as entry points for the pre-bundle. The pre-bundling is performed with `esbuild` so it's typically very fast.
+ຖ້າບໍ່ພົບ cache ທີ່ມີຢູ່, Vite ຈະລວມ source code ແລະ ກວດ dependency ທີ່ import ໂດຍອັດຕະໂນມັດ (ເຊັ່ນ: "bare imports" ທີ່ຄາດວ່າຈະໄດ້ຮັບການແກ້ໄຂຈາກ `node_modules`) ແລະ ໃຊ້ການ import ທີ່ພົບເຫັນເຫຼົ່ານີ້ເປັນຈຸດເລີ່ມຕົ້ນສຳລັບ pre-bundle. ການ pre-bundle ແມ່ນດຳເນີນການດ້ວຍ `esbuild` ດັ່ງນັ້ນໂດຍທົ່ວໄປແລ້ວມັນຈະໄວຫຼາຍ.
 
-After the server has already started, if a new dependency import is encountered that isn't already in the cache, Vite will re-run the dep bundling process and reload the page if needed.
+ຫຼັງຈາກເຊີເວີເລີ່ມເຮັດວຽກແລ້ວ, ຫາກພົບ import dependency ທີ່ບໍ່ໄດ້ຢູ່ໃນ cache, Vite ຈະ re-run deb bundling ອີກຄັ້ງ ແລະ ໂຫຼດໜ້າແມ່ນຫາກມັນຕ້ອງການ.
 
-## Monorepos and Linked Dependencies
+## Monorepos ແລະ Linked Dependencies
 
-In a monorepo setup, a dependency may be a linked package from the same repo. Vite automatically detects dependencies that are not resolved from `node_modules` and treats the linked dep as source code. It will not attempt to bundle the linked dep, and will analyze the linked dep's dependency list instead.
+ໃນການຕັ້ງຄ່າ monorepo, Dependency ອາດ linked package ຈາກ repo ດຽວກັນ. Vite  ຈະພົບ dependencies ທີ່ບໍ່ຢູ່ໃນ `node_modules` ໂດຍອັດຕະໂນມັດ ແລະ ຖືວ່າ linked dep ເປັນ source code. ມັນຈະບໍ່ພະຍາຍາມ bundle linked dep, ແຕ່ຈະວິເຄາະ dependency ຂອງ linked dep ແທນ.
 
-However, this requires the linked dep to be exported as ESM. If not, you can add the dependency to [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) and [`build.commonjsOptions.include`](/config/build-options.md#build-commonjsoptions) in your config.
+ເຖິງຢ່າງໃດກໍ່ຕາມ, ນີ້ຕ້ອງການ linked dep ເພື່ອ exported ເປັນ ESM. ຖ້າບໍ່, ທ່ານສາມາດເພີ່ມ dependency ໃນ [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) ແລະ [`build.commonjsOptions.include`](/config/build-options.md#build-commonjsoptions) ໃນ config ຂອງທ່ານ. 
 
 ```js
 export default defineConfig({
@@ -50,41 +50,41 @@ export default defineConfig({
 })
 ```
 
-When making changes to the linked dep, restart the dev server with the `--force` command line option for the changes to take effect.
+ເມື່ອມີການປ່ຽນແປງຂອງ linked dep, restart dev server ຕໍ່ດ້ວຍ `--force` ເພື່ອໃຫ້ການປ່ຽນແປງມີຜົນ .
 
-::: warning Deduping
-Due to differences in linked dependency resolution, transitive dependencies can deduplicate incorrectly, causing issues when used in runtime. If you stumble on this issue, use `npm pack` on the linked dependency to fix it.
+::: warning ໝາຍເຫດ
+ເນື່ອງຈາກຄວາມແຕກຕ່າງໃນການແກ້ໄຂ linked dependency, transitive dependencies ສາມາດຊໍ້າກັນຢ່າງບໍ່ຖືກຕ້ອງ, ເຮັດໃຫ້ເກີດບັນຫາຕອນ runtime. ຖ້າທ່ານຕິດຂັດກັບບັນຫານີ້ ໃຫ້ໃຊ້ `npm pack` ທີ່ linked dependency ເພື່ອແກ້ໄຂບັນຫາ.
 :::
 
-## Customizing the Behavior
+## ປັບແຕ່ງພຶດຕິກຳ
 
-The default dependency discovery heuristics may not always be desirable. In cases where you want to explicitly include/exclude dependencies from the list, use the [`optimizeDeps` config options](/config/dep-optimization-options.md).
+heuristics ການຄົ້ນພົບ dependency ທີ່ເປັນຄ່າເລີ່ມຕົ້ນອາດບໍ່ເປັນທີ່ຕ້ອງການສະເໝີໄປ. ໃນກໍລະນີທີ່ທ່ານຕ້ອງການລວມ/ບໍ່ລວມ dependencies ຈາກລາຍການ, ໃຊ້ [`optimizeDeps` config options](/config/dep-optimization-options.md).
 
-A typical use case for `optimizeDeps.include` or `optimizeDeps.exclude` is when you have an import that is not directly discoverable in the source code. For example, maybe the import is created as a result of a plugin transform. This means Vite won't be able to discover the import on the initial scan - it can only discover it after the file is requested by the browser and transformed. This will cause the server to immediately re-bundle after server start.
+ກໍລະນີການໃຊ້ງານທົ່ວໄປສຳລັບ `optimizeDeps.include` ຫຼື `optimizeDeps.exclude` ຄືເມື່ອທ່ານໄດ້ import ທີ່ບໍ່ສາມາດຄົ້ນພົບໄດ້ໃນ source code. ຕົວຢ່າງ, ອາດມີການ import ຈາກຜົນລັບຂອງການແປງ plugin. ໝາຍຄວາມວ່າ Vite ຈະບໍ່ສາມາດຄົ້ນຫາ import ໄດ້ໃນການສະແກນຄັ້ງທຳອິດ - ແຕ່ຈະຄົ້ນພົບໄດ້ຫຼັງຈາກບາວເຊີ request ແລະ ແປງຟາຍເທົ່ານັ້ນ. ເຊິ່ງຈະເຮັດໃຫ້ເຊີເວີ re-bundle ທັນທີ່ຫຼັງຈາກ restart.
 
-Both `include` and `exclude` can be used to deal with this. If the dependency is large (with many internal modules) or is CommonJS, then you should include it; If the dependency is small and is already valid ESM, you can exclude it and let the browser load it directly.
+ສາມາດໃຊ້ທັງ `include` ແລະ `exclude` ເພື່ອຈັດການກັບສິ່ງນີ້. ຖ້າ dependency ໃຫຍ່ (ມີ module ພາຍໃນຫຼາຍໂຕ) ຫຼື ແມ່ນ CommonJS, ທ່ານຄວນລວມມັນໄວ້ນຳ; ຖ້າ dependency ນ້ອຍ ແລະ ເປັນ ESM ທີ່ຖືກຕ້ອງຢູ່ແລ້ວ, ທ່ານສາມາດເອົາມັນອອກ ແລະ ໃຫ້ບາວເຊີໂຫຼດໂດຍກົງເລີຍ.
 
-You can further customize esbuild too with the [`optimizeDeps.esbuildOptions` option](/config/dep-optimization-options.md#optimizedeps-esbuildoptions). For example, adding an esbuild plugin to handle special files in dependencies.
+ທ່ານສາມາດປັບແຕ່ esbuild ໄດ້ຄືກັນດ້ວຍ [`optimizeDeps.esbuildOptions` option](/config/dep-optimization-options.md#optimizedeps-esbuildoptions). ຕົວຢ່າງ, ເພີ່ມ esbuild plugin ເພື່ອ handle ຟາຍພິເສດໃນ dependencies.
 
 ## Caching
 
 ### File System Cache
 
-Vite caches the pre-bundled dependencies in `node_modules/.vite`. It determines whether it needs to re-run the pre-bundling step based on a few sources:
+Vite caches pre-bundled dependencies ໃນ `node_modules/.vite`. ມັນກຳນົດວ່າຈຳເປັນຕ້ອງເອີ້ນເພື່ອ re-run ຂັ້ນຕອນ pre-bundling ອີງຕາມບໍ່ເທົ່າໃດ sources:
 
-- Package manager lockfile content, e.g. `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` or `bun.lockb`.
-- Patches folder modification time.
-- Relevant fields in your `vite.config.js`, if present.
-- `NODE_ENV` value.
+- Package manager lockfile content, ຕົວຢ່າງ `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` ຫຼື `bun.lockb`.
+- ແກ້ໄຂເວລາແກ້ໄຂໂຟເດີ.
+- Field ທີ່ກ່ຽວຂ້ອງໃນ `vite.config.js`,ຫາກມີ.
+- ຄ່າ `NODE_ENV`.
 
-The pre-bundling step will only need to be re-run when one of the above has changed.
+ຂັ້ນຕອນ pre-bundling ຈະຕ້ອງ re-run ເມື່ອມີການປ່ຽນແປງຂໍ້ໃດໜຶ່ງຂ້າງຕົ້ນເທົ່ານັ້ນ.
 
-If for some reason you want to force Vite to re-bundle deps, you can either start the dev server with the `--force` command line option, or manually delete the `node_modules/.vite` cache directory.
+ຫາກທ່ານຕ້ອງການບັງຄັບໃຫ້ Vite ເພື່ອ re-bundle deps, ທ່ານສາມາດເລີ່ມເຊີເວີ dev ດ້ວຍຕົວເລືອກ `--force` ຫຼື ລຶບ directory cache `node_modules/.vite` ດ້ວຍຕົນເອງ.
 
 ### Browser Cache
 
-Resolved dependency requests are strongly cached with HTTP headers `max-age=31536000,immutable` to improve page reload performance during dev. Once cached, these requests will never hit the dev server again. They are auto invalidated by the appended version query if a different version is installed (as reflected in your package manager lockfile). If you want to debug your dependencies by making local edits, you can:
+Dependency requests ທີ່ແກ້ໄຂແລ້ວຈະຖືກ cached ຢ່າງເຂັ້ມງວດດ້ວຍ HTTP headers `max-age=31536000,immutable` ເພື່ອປັບປຸງປະສິດທິພາບການໂຫຼດໜ້າໃໝ່ໃນລະຫວ່າງການພັດທະນາ. ເມື່ອ cache ແລ້ວ, Request ເຫຼົ່ານີ້ຈະບໍ່ສົ່ງເຖິງເຊີເວີອີກຄັ້ງ. ມັນຈະບໍ່ຖືກຕ້ອງໂດຍອັດຕະໂນມັດໂດຍການສືບຄົ້ນເວີຊັນຕໍ່ທ້າຍຫາກຕິດຕັ້ງເວີຊັນອື່ນ (ດັ່ງທີ່ສະແດງໃນ package manager lockfile ຂອງທ່ານ). ຖ້າທ່ານຕ້ອງການ debug dependencies ໂດຍການແປງຢູ່ local, ທ່ານສາມາດເຮັດໄດ້:
 
-1. Temporarily disable cache via the Network tab of your browser devtools;
-2. Restart Vite dev server with the `--force` flag to re-bundle the deps;
-3. Reload the page.
+1. ປິດໃຊ້ງານ cache ຊົ່ວຄາວຜ່ານແຖບ Network ຂອງ devtools ໃນບາວເຊີທ່ານ;
+2. Restart Vite dev server ພ້ອມ `--force` flag ເພື່ອ re-bundle deps;
+3. ໂຫຼດ page ຄືນໃໝ່.
